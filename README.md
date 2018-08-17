@@ -19,3 +19,6 @@ yarn run build
 ```
 yarn run lint
 ```
+###After setup
+Just go to the code and add a list of participants in App.vue
+Later on I'll add a field to to that automatically but this is just the first quick version.
