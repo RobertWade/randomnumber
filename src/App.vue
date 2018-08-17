@@ -2,6 +2,7 @@
   <div id="app">
     <h1 v-if="triggered === false">Participants</h1>
     <input class="inputField" v-model="participants.length" v-if="triggered === false">
+    <div class="winner">{{winner}}</div>
     <button class="button" @click="generationProcess" v-if="triggered === false">Find Winner</button>
     <v-progress-circular
       v-if="loading"
@@ -9,17 +10,14 @@
       color="orange"
       indeterminate
     ></v-progress-circular>
-     <div class="winner">{{winner}}</div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
   },
   data(){
     return {
@@ -28,7 +26,7 @@ export default {
       randomNumber:0,
       participants: 0,
       loading:false,
-      participants:[]
+      participants:['test1','test2']
     }
   },
   methods:{
@@ -42,10 +40,12 @@ export default {
       this.triggered=true;
       this.loading=true;
       setTimeout(()=>{
-        this.randomNumber= Math.floor((Math.random()*this.participants)+1)
+        this.randomNumber= Math.floor((Math.random()*this.participants.length))
         this.loading=false;
         this.start()
         this.winner= this.participants[this.randomNumber];
+        console.log(this.winner);
+        
         
       },2000)
     }
